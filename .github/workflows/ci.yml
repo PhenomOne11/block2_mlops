@@ -2,9 +2,9 @@ name: CI Pipeline - Lint, Test & Container Build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   test:
@@ -24,8 +24,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install flake8 pytest httpx onnx onnxruntime
+          pip install -e ".[dev]"
+
+      - name: Verify ONNX Runtime Installation
+        run: |
+          python -c "import onnxruntime as ort; print('ONNX Runtime:', ort.__version__)"
+          python -m pip show onnxruntime onnx
 
       - name: Generate CI Mock ONNX Model
         run: |
@@ -36,7 +40,7 @@ jobs:
           flake8 src --count --select=E9,F63,F7,F82 --show-source --statistics
           flake8 src --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-      - name: Run Pytest suite
+      - name: Run Pytest Suite
         run: |
           pytest tests/test_api.py -v
 
@@ -49,9 +53,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ONNX Dependency
+        run: |
+          python -m pip install --upgrade pip
+          pip install onnx
+
       - name: Generate Model for Container Context
         run: |
-          python -m pip install onnx
           python scripts/create_mock_model.py
 
       - name: Set up Docker Buildx
