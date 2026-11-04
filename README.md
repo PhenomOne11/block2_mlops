@@ -1,3 +1,4 @@
+[![CI Pipeline](https://github.com/PhenomOne11/block2_mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/PhenomOne11/block2_mlops/actions/workflows/ci.yml)
 # Low-Latency Containerized CIFAR-10 Inference Microservice with Asynchronous Dynamic Batching
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111.0-009688.svg?style=flat&logo=fastapi)](https://fastapi.tiangolo.com)
