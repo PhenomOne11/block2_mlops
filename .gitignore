@@ -1,0 +1,33 @@
+Set-Content -Path .gitignore -Value @"
+# Virtual Environments
+.venv/
+venv/
+ENV/
+
+# Python byte-code & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables & secrets
+.env
+
+# Large model artifacts (track metadata via models/model_manifest.json instead)
+models/*.onnx
+models/*.pt
+models/*.bin
+
+# Operating System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE configuration
+.vscode/
+.idea/
+"@
+data/

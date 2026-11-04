@@ -1,0 +1,51 @@
+{
+  "model_name": "cifar10_resnet",
+  "version": "1.0.0",
+  "artifact": {
+    "filename": "cifar10_resnet_int8.onnx",
+    "format": "ONNX",
+    "quantization": "INT8 Dynamic",
+    "sha256": "CEC625827A6B5337EA18D21D2747524D24A5E6D91B1EF224F1E7BFC7CF35084B"
+  },
+  "schema": {
+    "input": {
+      "name": "input",
+      "tensor_shape": [1, 3, 32, 32],
+      "data_type": "float32",
+      "normalization": {
+        "mean": [0.4914, 0.4822, 0.4465],
+        "std": [0.2023, 0.1994, 0.2010]
+      }
+    },
+    "output": {
+      "name": "output",
+      "shape": [1, 10],
+      "data_type": "float32",
+      "num_classes": 10
+    }
+  },
+  "runtime_environment": {
+    "engine": "ONNXRuntime",
+    "container": "python:3.12-slim",
+    "resource_caps": {
+      "cpus": "2.0",
+      "memory": "1g"
+    }
+  },
+  "benchmarks": {
+    "locust_stress_test": {
+      "concurrency_users": 200,
+      "duration": "60s",
+      "total_requests": 3314,
+      "failures": 0,
+      "failure_rate_percent": 0.0,
+      "latency_percentiles_ms": {
+        "p50": 3100,
+        "p90": 3800,
+        "p95": 4000,
+        "p99": 4400,
+        "max": 5300
+      }
+    }
+  }
+}

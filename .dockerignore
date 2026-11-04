@@ -1,0 +1,25 @@
+# Git and IDE
+.git
+.gitignore
+.vscode
+.idea
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Local logs and test files
+*.log
+tests/
+scripts/
