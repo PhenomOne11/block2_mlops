@@ -1,7 +1,12 @@
 # block2_mlops
 
-### Low-Latency CIFAR-10 Inference Microservice with ONNX Runtime, Asynchronous Dynamic Batching & Docker
+> **Production-grade, INT8-quantized edge serving microservice featuring custom async dynamic micro-batching. Handles 200 concurrent VUs with 0.00% failure rate at ~55.2 req/s under strict 1 GB RAM / 2-core cgroup resource constraints.**
 
+[![CI](https://github.com/PhenomOne11/block2_mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/PhenomOne11/block2_mlops/actions/workflows/ci.yml)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-INT8%20Quantized-emerald.svg)](https://onnxruntime.ai/)
+
+---
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
   <img src="https://img.shields.io/badge/FastAPI-0.111.0-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/>
